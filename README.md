@@ -1,6 +1,6 @@
 # Export-Blazor-DataGrid-to-Excel
 
-This sample explains about how to perform excel exporting in the Blazor Grid component. This project also includes code snippet to customize the file name, header cell, row, column, cell, group cation, data source,aggregate also how to add header, and footer of the exported excel document.
+This sample explains about how to perform excel exporting in the Blazor Grid component. This project also includes code snippet to customize the file name, header cell, row, column, cell, group cation, data source,aggregate also how to add header and footer of the exported excel document.
 
 **Documentation**: https://blazor.syncfusion.com/documentation/datagrid/excel-exporting
 
