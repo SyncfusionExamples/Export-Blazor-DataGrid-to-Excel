@@ -21,6 +21,7 @@
     /// <param name="args"></param>
     public void ExcelQueryCellInfoHandler(ExcelQueryCellInfoEventArgs<Order> args)
     {
+        //Below code allows, you to change a specific grid column in an Excel document.
         if (args.Column.Field == "OrderID")
         {
             args.Cell.CellStyle.BackColor = "#DC143C";
