@@ -2,10 +2,11 @@
 
 @using Syncfusion.Blazor.Grids
 
-<p>Exporting Selected Rows to Excel</p>
-<SfGrid ID="Grid" @ref="BlazorDataGrid" DataSource="@Orders" AllowExcelExport="true"  Toolbar="@(new List<string>() { "ExcelExport" })">
+<SfGrid ID="Grid" @ref="BlazorDataGrid" DataSource="@Orders" AllowExcelExport="true" Toolbar="@(new List<string>() { "ExcelExport" })" AllowSelection="true">
     <GridEvents OnToolbarClick="OnToolbarClick" TValue="Order"></GridEvents>
+    <GridSelectionSettings Type="SelectionType.Multiple"></GridSelectionSettings>
     <GridColumns>
+        <GridColumn Type="ColumnType.CheckBox" Width="50"></GridColumn>
         <GridColumn Field=@nameof(Order.OrderID) HeaderText="Order ID" TextAlign="TextAlign.Right" Width="120"></GridColumn>
         <GridColumn Field=@nameof(Order.CustomerID) HeaderText="Customer Name" Width="150"></GridColumn>
         <GridColumn Field=@nameof(Order.OrderDate) HeaderText=" Order Date" Format="d" Type="ColumnType.Date" TextAlign="TextAlign.Right" Width="130"></GridColumn>
@@ -17,7 +18,6 @@
     private SfGrid<Order>? BlazorDataGrid;
 
     public List<Order>? Orders { get; set; }
-    public List<Order>? dynamicSource { get; set; }
 
     public async Task OnToolbarClick(Syncfusion.Blazor.Navigations.ClickEventArgs args)
     {
@@ -25,7 +25,15 @@
         {
             var excelExportProperties = new ExcelExportProperties();
             //Selected rows provided as DataSource to export.
-            excelExportProperties.DataSource = dynamicSource;
+            var selectedRecord = await BlazorDataGrid!.GetSelectedRecordsAsync();
+            if (selectedRecord.Count() > 0)
+            {
+                excelExportProperties.DataSource = selectedRecord;
+            }
+            else
+            {
+                excelExportProperties.DataSource = Orders;
+            }
             await this.BlazorDataGrid!.ExportToExcelAsync(excelExportProperties);
         }
     }
@@ -39,15 +47,6 @@
                 Freight = 2.1 * x,
                 OrderDate = DateTime.Now.AddDays(-x),
             }).ToList();
-
-        dynamicSource = Enumerable.Range(1, 10).Select(x => new Order()
-            {
-                OrderID = 1110 + x,
-                CustomerID = (new string[] { "ALFKI", "ANANTR", "ANTON", "BLONP", "BOLID" })[new Random().Next(5)],
-                ShipCountry = (new string[] { "Germany", "UK", "USA", "Italy", "France" })[new Random().Next(5)],
-                Freight = 2.1 * x,
-                OrderDate = DateTime.Now.AddDays(-x),
-            }).ToList(); 
     }
 
     public class Order
