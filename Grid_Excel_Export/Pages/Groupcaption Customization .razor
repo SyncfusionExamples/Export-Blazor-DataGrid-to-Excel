@@ -25,12 +25,12 @@
     public List<Order>? Orders { get; set; }
     
     /// <summary>
-    /// Handler to customize the Group caption when exporting to Excel.
+    /// Handler to customize the Groupcaption, when exporting to Excel.
     /// </summary>
     /// <param name="args"></param>
     public void ExcelGroupCaptionHandler(ExcelCaptionTemplateArgs args)
     {
-        //Below code customizes the cell value of Group caption in Excel
+        //Below code customizes the cell value of Groupcaption in Excel
         args.Cell.Value =  args.Key;
     }
 
