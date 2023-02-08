@@ -4,7 +4,7 @@
 
 <SfGrid ID="Grid" @ref="BlazorDataGrid" DataSource="@Orders" Toolbar="@(new List<string>() { "ExcelExport" })" AllowExcelExport="true" AllowGrouping="true">
     <GridEvents ExcelGroupCaptionTemplateInfo="ExcelGroupCaptionHandler" OnToolbarClick="ToolbarClickHandler" TValue="Order"></GridEvents>
-    <GridGroupSettings Columns="@Initial">
+    <GridGroupSettings Columns="@(new string[] { "CustomerID" })">
         <CaptionTemplate>
             @{
                 var order = (context as CaptionTemplateContext);
@@ -23,15 +23,15 @@
 @code {
     private SfGrid<Order>? BlazorDataGrid;
     public List<Order>? Orders { get; set; }
-    string[] Initial = new string[] { "CustomerID" };
+    
     /// <summary>
-    /// Handler to Customize the Group caption when exporting to Excel.
+    /// Handler to customize the Group caption when exporting to Excel.
     /// </summary>
-    /// <param name="Args"></param>
-    public void ExcelGroupCaptionHandler(ExcelCaptionTemplateArgs Args)
+    /// <param name="args"></param>
+    public void ExcelGroupCaptionHandler(ExcelCaptionTemplateArgs args)
     {
         //Below code customizes the cell value of Group caption in Excel
-        Args.Cell.Value =  Args.Key;
+        args.Cell.Value =  args.Key;
     }
 
 
@@ -42,6 +42,7 @@
             await this.BlazorDataGrid!.ExportToExcelAsync();
         }
     }
+
     protected override void OnInitialized()
     {
         Orders = Enumerable.Range(1, 10).Select(x => new Order()

@@ -21,10 +21,9 @@
     /// <param name="args"></param>
     public void ExcelQueryCellInfoHandler(ExcelQueryCellInfoEventArgs<Order> args)
     {
-
         if (args.Column.Field == "OrderID")
         {
-                args.Cell.CellStyle.BackColor = "#DC143C";
+            args.Cell.CellStyle.BackColor = "#DC143C";
         }
     }
 

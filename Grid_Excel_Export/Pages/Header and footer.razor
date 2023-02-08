@@ -41,30 +41,37 @@
         {
             var excelExportProperties = new ExcelExportProperties();
             var headerContent = new ExcelHeader();
-            var footerContent = new ExcelFooter();
+            
+            //Adding headers rows
             headerContent.HeaderRows = 2;
             var headerCell = new List<ExcelCell>
             {
-                new ExcelCell() { RowSpan= 2,ColSpan=5 , Value= "Order details report", Style = new ExcelStyle() { Bold = true, FontSize = 13, Italic= true }  }
+                new ExcelCell() { RowSpan= 2,ColSpan=5 , Value= "Order details report",
+                Style = new ExcelStyle() { Bold = true, FontSize = 13, Italic= true }  }
             };
 
             var headerRow = new List<ExcelRow>
             {
                 new ExcelRow() {  Cells = headerCell, Index = 1 }
             };
+            headerContent.Rows = headerRow;
+            excelExportProperties.Header = headerContent;
+
+            //Adding footer rows
+            var footerContent = new ExcelFooter();
             var footercell = new List<ExcelCell>
             {
-                new ExcelCell() { RowSpan= 2,ColSpan=5 , Value= "Order details ending", Style = new ExcelStyle() { Bold = true, FontSize = 13, Italic= true }  }
+                new ExcelCell() { RowSpan= 2,ColSpan=5 , Value= "Order details ending", 
+                Style = new ExcelStyle() { Bold = true, FontSize = 13, Italic= true }  }
             };
             var footerRow = new List<ExcelRow>
             {
                 new ExcelRow() {  Cells = footercell, Index = 1 }
             };
-            headerContent.Rows = headerRow;
-            footerContent.FooterRows = 3;
-            footerContent.Rows = footerRow;
-            excelExportProperties.Header = headerContent;
+            footerContent.FooterRows = 2;
+            footerContent.Rows = footerRow; 
             excelExportProperties.Footer = footerContent;
+
             await this.BlazorDataGrid!.ExportToExcelAsync(excelExportProperties);
         }
     }

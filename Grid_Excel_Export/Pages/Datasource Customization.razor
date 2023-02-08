@@ -2,6 +2,7 @@
 
 @using Syncfusion.Blazor.Grids
 
+<p>Exporting Selected Rows to Excel</p>
 <SfGrid ID="Grid" @ref="BlazorDataGrid" DataSource="@Orders" AllowExcelExport="true"  Toolbar="@(new List<string>() { "ExcelExport" })">
     <GridEvents OnToolbarClick="OnToolbarClick" TValue="Order"></GridEvents>
     <GridColumns>
@@ -23,6 +24,7 @@
         if (args.Item.Id == "Grid_excelexport") 
         {
             var excelExportProperties = new ExcelExportProperties();
+            //Selected rows provided as DataSource to export.
             excelExportProperties.DataSource = dynamicSource;
             await this.BlazorDataGrid!.ExportToExcelAsync(excelExportProperties);
         }
