@@ -43,10 +43,10 @@
             var headerContent = new ExcelHeader();
             
             //Adding headers rows
-            headerContent.HeaderRows = 2;
+            headerContent.HeaderRows = 1;
             var headerCell = new List<ExcelCell>
             {
-                new ExcelCell() { RowSpan= 2,ColSpan=5 , Value= "Order details report",
+                new ExcelCell() {ColSpan=5 , Value= "Order details report",
                 Style = new ExcelStyle() { Bold = true, FontSize = 13, Italic= true }  }
             };
 
@@ -61,14 +61,14 @@
             var footerContent = new ExcelFooter();
             var footercell = new List<ExcelCell>
             {
-                new ExcelCell() { RowSpan= 2,ColSpan=5 , Value= "Order details ending", 
+                new ExcelCell() {ColSpan=5 , Value= "Order details ending", 
                 Style = new ExcelStyle() { Bold = true, FontSize = 13, Italic= true }  }
             };
             var footerRow = new List<ExcelRow>
             {
                 new ExcelRow() {  Cells = footercell}
             };
-            footerContent.FooterRows = 2;
+            footerContent.FooterRows = 1;
             footerContent.Rows = footerRow; 
             excelExportProperties.Footer = footerContent;
 
