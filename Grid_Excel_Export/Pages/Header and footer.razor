@@ -52,7 +52,7 @@
 
             var headerRow = new List<ExcelRow>
             {
-                new ExcelRow() {  Cells = headerCell, Index = 1 }
+                new ExcelRow() {  Cells = headerCell}
             };
             headerContent.Rows = headerRow;
             excelExportProperties.Header = headerContent;
@@ -66,7 +66,7 @@
             };
             var footerRow = new List<ExcelRow>
             {
-                new ExcelRow() {  Cells = footercell, Index = 1 }
+                new ExcelRow() {  Cells = footercell}
             };
             footerContent.FooterRows = 2;
             footerContent.Rows = footerRow; 
