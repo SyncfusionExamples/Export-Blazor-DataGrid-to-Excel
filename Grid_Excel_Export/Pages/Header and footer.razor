@@ -44,12 +44,6 @@
 
             //Adding headers rows
             headerContent.HeaderRows = 1;
-            var headerCell = new List<ExcelCell>
-            {
-                new ExcelCell() {ColSpan=5 , Value= "Order details report",
-                Style = new ExcelStyle() { Bold = true, FontSize = 20, Italic= true }  }
-            };
-
             var headerRows = new List<ExcelRow>
             {
                 new ExcelRow() {  
