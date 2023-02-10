@@ -49,7 +49,10 @@
 
     public async Task ToolbarClickHandler(Syncfusion.Blazor.Navigations.ClickEventArgs args)
     {
-        await this.BlazorDataGrid!.ExportToExcelAsync();
+        if (args.Item.Id == "Grid_excelexport") //Id is combination of Grid's ID and itemname
+        {
+            await this.BlazorDataGrid!.ExportToExcelAsync();
+        }
     }
 
 }
