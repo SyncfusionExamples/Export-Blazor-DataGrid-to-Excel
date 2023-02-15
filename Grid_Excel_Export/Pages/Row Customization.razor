@@ -22,7 +22,7 @@
     public void ExcelQueryCellInfoHandler(ExcelQueryCellInfoEventArgs<Order> args)
     {
         //Below code allows you to change a specific grid Row in an Excel document.
-        if (args.Data.OrderID == 1001)
+        if (args.Data?.OrderID == 1001)
         {
             args.Cell.CellStyle.BackColor = "#DC143C";
         }
