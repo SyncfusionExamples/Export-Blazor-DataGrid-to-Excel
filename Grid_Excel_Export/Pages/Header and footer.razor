@@ -43,16 +43,17 @@
             var headerContent = new ExcelHeader();
 
             //Adding headers rows
-            headerContent.HeaderRows = 1;
+            headerContent.HeaderRows = 2;
             var headerRows = new List<ExcelRow>
             {
                 new ExcelRow() {  
                     Cells = new List<ExcelCell>
                     {
-                        new ExcelCell() {ColSpan=5 , Value= "Order details report",
+                        new ExcelCell() {RowSpan=2 ,ColSpan=5 , Value= "Order details report",
                         Style = new ExcelStyle() { Bold = true, FontSize = 20, Italic= true }  }
                     }
                 },
+                new ExcelRow()
             };
             headerContent.Rows = headerRows;
             excelExportProperties.Header = headerContent;
