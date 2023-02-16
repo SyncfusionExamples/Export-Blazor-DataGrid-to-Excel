@@ -39,7 +39,16 @@
     {
         if (args.Item.Id == "Grid_excelexport")  // Id is the combination of Grid's ID and item name.
         {
-            await this.BlazorDataGrid!.ExportToExcelAsync();
+            var excelExportProperties = new ExcelExportProperties();
+            var excelTheme = new ExcelTheme()
+                {
+                    Caption = new ExcelStyle()
+                    {
+                        BackColor = "#FFA500" //orange color code
+                    }
+                };
+            excelExportProperties.Theme = excelTheme;
+            await this.BlazorDataGrid!.ExportToExcelAsync(excelExportProperties);
         }
     }
 
