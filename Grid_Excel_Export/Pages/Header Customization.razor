@@ -45,7 +45,7 @@
                     Header = new ExcelStyle()
                     {
                         FontName = "Segoe UI",
-                        FontColor = "#DC143C",
+                        FontColor = "#DC143C",//red color
                         FontSize = 12
                     }
                 };
@@ -60,6 +60,6 @@
     public void ExcelHeaderQueryCellInfoHandler(ExcelHeaderQueryCellInfoEventArgs args)
     {
         //Below code customizes the back color of header in Excel
-        args.Cell.CellStyle.BackColor = "blue";
+        args.Cell.CellStyle.BackColor = "#00FFFF";//aqua color
     }
 }
